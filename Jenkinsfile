@@ -2,7 +2,7 @@ node {
     try{
         notify('Started')
         stage('Downloading') {
-        git 'https://github.com/Dhamodharanraju/springBoot.git'
+        git 'https://github.com/Limbrit/SpringApp03.git'
         }
         
         dir('spring-boot-samples/spring-boot-sample-tomcat-jsp/') {
