@@ -10,10 +10,10 @@ node {
             sh 'mvn clean'
             }
             stage('Compile') {
-            sh 'mvn clean'
+            sh 'mvn complile'
             }
             stage('Test') {
-            sh 'mvn compile'
+            sh 'mvn test'
             }
             stage('Package') {
             sh 'mvn package'
