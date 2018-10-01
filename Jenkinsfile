@@ -2,13 +2,9 @@ node {
     try{
         notify('Started')
         stage('Downloading') {
-<<<<<<< HEAD
 		git 'https://github.com/Limbrit/SpringApp03.git'
-=======
-        git 'https://github.com/Limbrit/SpringApp03.git'
->>>>>>> ac2bee66360a4af10ef338949a3a9a9eedbb1a9f
         }
-        
+		
         dir('spring-boot-samples/spring-boot-sample-atmosphere/') {
             stage('Clean') {
             sh 'mvn clean'
