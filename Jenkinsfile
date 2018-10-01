@@ -28,7 +28,7 @@ node {
    				sh 'sudo docker push limbrit/my-app001:0.0.1'
 			}
 			stage('Running Docker on Local'){
-				sh 'sudo docker run -p 8099:8099 -d limbrit/my-app001:0.0.1'
+				sh 'sudo docker run -p 8098:8098 -d limbrit/my-app001:0.0.1'
 			}
             archiveArtifacts 'target/*.jar'
         }
