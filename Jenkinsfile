@@ -2,10 +2,10 @@ node {
     try{
         notify('Started')
         stage('Downloading') {
-        git 'https://github.com/Dhamodharanraju/springBoot.git'
+		git 'https://github.com/Limbrit/SpringApp03.git'
         }
         
-        dir('spring-boot-samples/spring-boot-sample-tomcat-jsp/') {
+        dir('spring-boot-samples/spring-boot-sample-atmosphere/') {
             stage('Clean') {
             sh 'mvn clean'
             }
@@ -22,15 +22,15 @@ node {
 			sh 'sudo docker build -t limbrit/my-app001:0.0.1 .'
 			}
 			stage('Push Docker Image'){
-			withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhub')]) {
-				sh "sudo docker login -u limbrit -p ${dockerhub}"
+			withCredentials([string(credentialsId: 'DockerHUB', variable: 'MyDockerHub')]) {
+				sh "sudo docker login -u limbrit -p ${MyDockerHub}"
 				}
    				sh 'sudo docker push limbrit/my-app001:0.0.1'
 			}
 			stage('Running Docker on Local'){
-				sh 'sudo docker run -p 8085:8085 -d limbrit/my-app001:0.0.1'
+				sh 'sudo docker run -p 8095:8095 -d limbrit/my-app001:0.0.1'
 			}
-            archiveArtifacts 'target/*.war'
+            archiveArtifacts 'target/*.jar'
         }
         notify('Success')
     } catch (err) {
